@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
   before_action :set_sub
-  before_action :set_topic, only: [:show, :edit, :udpate, :destroy]
+  before_action :set_topic, only: [:show, :edit, :update, :destroy]
   
   def index
     @topics = @sub.topics
@@ -29,7 +29,7 @@ class TopicsController < ApplicationController
     render component: 'TopicEdit', props: { topic: @topic, sub: @sub }
   end
 
-  def udpate
+  def update
     if @topic.update(topic_params)
       redirect_to [@sub, @topic]
       # same as redirect_to sub_topic(@sub, topic)
